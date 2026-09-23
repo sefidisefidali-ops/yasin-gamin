@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yasin Gaming Zone</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;700;800;900&display=swap');
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Vazirmatn',Tahoma,sans-serif;
+  background:#050505;
+  color:#fff;
+  min-height:100vh;
+  overflow-x:hidden;
+}
+body:before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;z-index:-1;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(255,102,0,.13),transparent 25%),
+    radial-gradient(circle at 85% 70%,rgba(255,102,0,.10),transparent 25%);
+}
+.container{width:min(1180px,92%);margin:auto}
+
+/* Header */
+header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(5,5,5,.82);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,115,0,.25);
+}
+.nav{
+  height:78px;display:flex;align-items:center;justify-content:space-between;gap:20px;
+}
+.logo{
+  font-size:22px;font-weight:900;letter-spacing:1px;
+}
+.logo b{color:#ff7100}
+.tabs{display:flex;gap:8px}
+.tab{
+  border:1px solid #292929;background:#101010;color:#aaa;
+  padding:12px 22px;border-radius:12px;cursor:pointer;
+  font:inherit;font-weight:800;transition:.25s;
+}
+.tab:hover,.tab.active{
+  color:#fff;border-color:#ff7100;
+  background:linear-gradient(145deg,#ff7a00,#b83d00);
+  box-shadow:0 0 22px rgba(255,102,0,.28);
+  transform:translateY(-2px);
+}
+.profile{color:#999;font-size:13px;text-align:left}
+.profile strong{display:block;color:#fff;font-size:14px}
+
+/* Main */
+.page{display:none;animation:fade .4s ease}
+.page.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+
+.hero{
+  min-height:420px;display:flex;align-items:center;
+  padding:75px 0 50px;
+}
+.hero-content{max-width:720px}
+.badge{
+  display:inline-block;padding:7px 15px;border:1px solid #663000;
+  color:#ff8a28;background:#1b0d04;border-radius:999px;margin-bottom:18px;
+}
+h1{font-size:clamp(42px,7vw,78px);line-height:1.15;font-weight:900}
+.orange{color:#ff7200;text-shadow:0 0 35px rgba(255,102,0,.35)}
+.hero p{color:#aaa;font-size:18px;margin:20px 0 28px;max-width:650px}
+.btn{
+  border:0;cursor:pointer;padding:14px 24px;border-radius:12px;
+  color:#fff;background:linear-gradient(135deg,#ff8100,#c94700);
+  font:inherit;font-weight:800;box-shadow:0 10px 30px rgba(255,93,0,.18);
+}
+.btn:hover{transform:translateY(-2px)}
+
+.cards{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:22px;padding:20px 0 80px;
+}
+.card{
+  position:relative;overflow:hidden;min-height:300px;padding:28px;
+  background:linear-gradient(145deg,#151515,#090909);
+  border:1px solid #292929;border-radius:22px;
+  transform-style:preserve-3d;transition:.3s;
+  box-shadow:inset 0 1px rgba(255,255,255,.04),0 20px 50px rgba(0,0,0,.4);
+}
+.card:hover{
+  transform:perspective(900px) rotateX(3deg) rotateY(-3deg) translateY(-8px);
+  border-color:#ff7100;
+  box-shadow:0 20px 60px rgba(255,89,0,.16);
+}
+.card:after{
+  content:"";position:absolute;top:-100px;right:-100px;width:220px;height:220px;
+  background:#ff7100;filter:blur(100px);opacity:.12;
+}
+.game-icon{font-size:52px;margin-bottom:18px}
+.card h2{font-size:28px;margin-bottom:8px}
+.card p{color:#999;min-height:65px}
+.card button{margin-top:20px;width:100%}
+
+/* Game pages */
+.game-hero{
+  padding:65px 0 30px;
+  border-bottom:1px solid #1b1b1b;
+}
+.game-title{font-size:clamp(45px,8vw,80px);font-weight:900}
+.game-title span{color:#ff7100}
+.info-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:18px;padding:35px 0 80px;
+}
+.info{
+  padding:24px;border:1px solid #242424;background:#0d0d0d;border-radius:18px;
+}
+.info h3{color:#ff7100;margin-bottom:7px}
+.info p{color:#999}
+.back{
+  display:inline-block;color:#ff8a28;margin-top:15px;cursor:pointer
+}
+
+/* Footer */
+footer{
+  border-top:1px solid #1c1c1c;text-align:center;padding:28px;
+  color:#666;font-size:13px;
+}
+
+@media(max-width:800px){
+  .nav{height:auto;padding:15px 0;flex-wrap:wrap}
+  .profile{display:none}
+  .tabs{width:100%;order:3}
+  .tab{flex:1;padding:10px 5px;font-size:13px}
+  .cards,.info-grid{grid-template-columns:1fr}
+  .hero{padding-top:55px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container nav">
+    <div class="logo">YASIN <b>GAMING</b></div>
+
+    <div class="tabs">
+      <button class="tab active" data-page="cs">CS</button>
+      <button class="tab" data-page="dodo">DODo</button>
+      <button class="tab" data-page="cod">CALL AF</button>
+    </div>
+
+    <div class="profile">
+      <strong>یاسین محمدی</strong>
+      پایه یازدهم نرم‌افزار
+    </div>
+  </div>
+</header>
+
+<!-- CS -->
+<section id="cs" class="page active">
+  <div class="container">
+    <div class="hero">
+      <div class="hero-content">
+        <span class="badge">🎮 GAMING ZONE</span>
+        <h1>دنیای <span class="orange">CS</span></h1>
+        <p>بخش اختصاصی Counter-Strike؛ جایی برای معرفی بازی، تنظیمات، آموزش‌ها و محتوای گیمینگ.</p>
+        <button class="btn" onclick="showPage('cs-info')">ورود به بخش CS</button>
+      </div>
+    </div>
+
+    <div class="cards">
+      <div class="card">
+        <div class="game-icon">🔫</div>
+        <h2>Counter-Strike</h2>
+        <p>معرفی بازی و محتوای مخصوص بازیکنان.</p>
+        <button class="btn" onclick="showPage('cs-info')">مشاهده بخش</button>
+      </div>
+      <div class="card">
+        <div class="game-icon">🎯</div>
+        <h2>تنظیمات</h2>
+        <p>حساسیت، کراس‌هِیر و تنظیمات قابل شخصی‌سازی.</p>
+        <button class="btn" onclick="showPage('cs-info')">مشاهده</button>
+      </div>
+      <div class="card">
+        <div class="game-icon">🏆</div>
+        <h2>رقابت</h2>
+        <p>بخش مسابقات و اطلاعات تیم‌ها.</p>
+        <button class="btn" onclick="showPage('cs-info')">مشاهده</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DODo -->
+<section id="dodo" class="page">
+  <div class="container">
+    <div class="game-hero">
+      <span class="badge">GAME 02</span>
+      <div class="game-title">D<span>ODo</span></div>
+      <p>صفحه اختصاصی DODo با طراحی سه‌بعدی مشکی و نارنجی.</p>
+      <span class="back" onclick="showPage('cs')">← بازگشت به صفحه اصلی</span>
+    </div>
+    <div class="info-grid">
+      <div class="info"><h3>🎮 معرفی</h3><p>اینجا می‌توانیم اطلاعات کامل بازی و توضیحات آن را قرار دهیم.</p></div>
+      <div class="info"><h3>⚡ آموزش</h3><p>آموزش‌ها و نکات بازی در این قسمت قرار می‌گیرند.</p></div>
+      <div class="info"><h3>🏆 مسابقات</h3><p>بخش مخصوص مسابقات، رکوردها و نتایج.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- COD -->
+<section id="cod" class="page">
+  <div class="container">
+    <div class="game-hero">
+      <span class="badge">GAME 03</span>
+      <div class="game-title">CALL <span>AF</span></div>
+      <p>بخش اختصاصی Call of Duty با امکانات قابل توسعه.</p>
+      <span class="back" onclick="showPage('cs')">← بازگشت به صفحه اصلی</span>
+    </div>
+    <div class="info-grid">
+      <div class="info"><h3>🎯 سنس و تنظیمات</h3><p>قسمت مخصوص تنظیمات و حساسیت بازی.</p></div>
+      <div class="info"><h3>🔫 Loadout</h3><p>معرفی اسلحه‌ها، اتچمنت‌ها و تجهیزات.</p></div>
+      <div class="info"><h3>🔥 مولتی‌پلیر</h3><p>نکات و محتوای مخصوص بخش Multiplayer.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Internal info page -->
+<section id="cs-info" class="page">
+  <div class="container">
+    <div class="game-hero">
+      <span class="badge">CS SECTION</span>
+      <div class="game-title">CS <span>ZONE</span></div>
+      <p>این یک صفحه جدا داخل همان سایت است؛ بعداً می‌توانیم امکانات واقعی به آن اضافه کنیم.</p>
+      <span class="back" onclick="showPage('cs')">← برگشت</span>
+    </div>
+    <div class="info-grid">
+      <div class="info"><h3>⚙️ تنظیمات</h3><p>تنظیمات حرفه‌ای بازی را اینجا قرار می‌دهیم.</p></div>
+      <div class="info"><h3>📚 آموزش</h3><p>آموزش‌های مرحله‌به‌مرحله در این قسمت قرار می‌گیرند.</p></div>
+      <div class="info"><h3>👑 پروفایل</h3><p>پروفایل گیمر و آمار بازی قابل اضافه شدن است.</p></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  یاسین محمدی • هنرستان صنعتی شریف • پایه یازدهم نرم‌افزار
+</footer>
+
+<script>
+const tabs=document.querySelectorAll('.tab');
+
+tabs.forEach(tab=>{
+  tab.addEventListener('click',()=>showPage(tab.dataset.page));
+});
+
+function showPage(id){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const page=document.getElementById(id);
+  if(page) page.classList.add('active');
+
+  tabs.forEach(t=>{
+    t.classList.toggle('active', t.dataset.page===id || (id==='cs-info' && t.dataset.page==='cs'));
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+
+</body>
+</html>
